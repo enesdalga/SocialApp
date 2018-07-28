@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-
+using SocialApp.API.Models;
 
 namespace SocialApp.API.Data
 {
@@ -10,5 +10,6 @@ namespace SocialApp.API.Data
             
         }
 
+        public DbSet<User> Users { get; set; }
     }
 }
