@@ -40,6 +40,8 @@ namespace SocialApp.API
            
             services.AddCors();
 
+            services.AddTransient<Seed>();
+
             services.AddScoped<IAuthRepository,AuthRepository>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -54,7 +56,7 @@ namespace SocialApp.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,Seed seeder)
         {
             if (env.IsDevelopment())
             {
@@ -78,6 +80,9 @@ namespace SocialApp.API
             }
 
             //app.UseHttpsRedirection();
+
+            //seeder.SeedUser();
+
             app.UseCors(x=>x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
             app.UseAuthentication();
